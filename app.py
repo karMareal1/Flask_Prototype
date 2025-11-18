@@ -19,7 +19,7 @@ class Todo(db.Model):
 
     #function to return a string when we add a new task
     def __repr__(self):
-        return '<Task %r>' %self.date_created       
+        return '<Task %r>' %self.id    
 
 #checks whether the script is being run directly and not imported as a module (helps you run it)
 if __name__ == "__main__":
