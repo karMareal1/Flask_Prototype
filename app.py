@@ -1,7 +1,10 @@
 from flask import Flask, render_template, url_for
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__) #Setting up the app
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' #Setting up the database
+db = SQLAlchemy(app) #Initializing the database
 @app.route("/") #setting up the http address
 #function for the router
 def index():
