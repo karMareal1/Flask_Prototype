@@ -9,7 +9,7 @@ db = SQLAlchemy(app) #Initializing the database
 @app.route("/") #setting up the http address
 #function for the router
 def index():
-    return "Hello"
+    return render_template('index.html') #rendering the html file
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)

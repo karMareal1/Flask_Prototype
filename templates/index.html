@@ -1,7 +1,7 @@
-{%- extends "base.html" -%}
+{%- extends 'base.html' %}
 
 {% block head %}
-<h1>Template</h1>
+
 {% endblock %}
 
 {% block body %}
@@ -15,22 +15,15 @@
             <th>Actions</th>
         </tr>
         <tr>
-            <td>Sample Task</td>
-            <td>2024-01-01</td>
+            <td></td>
+            <td></td>
             <td>
                 <a href="">Delete</a>
                 <br>
                 <a href="">Update</a>
             </td>
         </tr>
-        {% for task in tasks %}
-        <tr>
-            <td>{{ task.id }}</td>
-            <td>{{ task.title }}</td>
-            <td>{{ task.description }}</td>
-            <td>{{ task.status }}</td>
-        </tr>
-        {% endfor %}
     </table>
+
 </div>
 {% endblock %}
