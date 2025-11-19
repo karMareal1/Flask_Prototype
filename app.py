@@ -23,8 +23,16 @@ def index():
         tasks = Todo.query.order_by(Todo.date_created).all() #querying all the tasks from the database
         return render_template('index.html', tasks=tasks) #rendering the html file
 
-
-
+@app.route('/delete/<int : id>')
+def delete(id):
+    task_to_delete = Todo.quesry.get_or_404(id) #getting the task to delete or returning a 404 error if not found
+    try:
+        db.session.delete(task_to_delete) #deleting the task
+        db.session.commit() #committing the changes
+        return redirect('/') #return to the home page
+    except:
+        return "there was an issue lil bro"
+        
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
