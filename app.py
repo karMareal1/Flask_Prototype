@@ -6,7 +6,7 @@ app = Flask(__name__) #Setting up the app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' #Setting up the database
 db = SQLAlchemy(app) #Initializing the database
-@app.route("/") #setting up the http address
+@app.route("/", methods=['GET', 'POST']) #setting up the http address
 #function for the router
 def index():
     if request.method =='POST':
@@ -23,9 +23,9 @@ def index():
         tasks = Todo.query.order_by(Todo.date_created).all() #querying all the tasks from the database
         return render_template('index.html', tasks=tasks) #rendering the html file
 
-@app.route('/delete/<int : id>')
+@app.route('/delete/<int:id>')
 def delete(id):
-    task_to_delete = Todo.quesry.get_or_404(id) #getting the task to delete or returning a 404 error if not found
+    task_to_delete = Todo.query.get_or_404(id) #getting the task to delete or returning a 404 error if not found
     try:
         db.session.delete(task_to_delete) #deleting the task
         db.session.commit() #committing the changes
