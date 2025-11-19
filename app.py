@@ -32,6 +32,11 @@ def delete(id):
         return redirect('/') #return to the home page
     except:
         return "there was an issue lil bro"
+    
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    
+
         
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
